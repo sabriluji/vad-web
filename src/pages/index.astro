@@ -26,9 +26,17 @@ import "../styles/tailwind.css";
 								aire acondicionado, calderas y energía solar. 
 								Consulte para manteniemiento mensual a empresas. 
 							</p>
-							<div class="mt-6 flex flex-wrap gap-3">
+							<div class="mt-6 flex flex-wrap gap-3 items-start">
 								<a href="#contacto" class="inline-flex items-center justify-center rounded-md bg-brand-600 px-5 py-3 text-sm font-semibold text-black shadow-sm transition hover:bg-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500">Solicitar presupuesto</a>
-								<a href="#servicios" class="inline-flex items-center justify-center rounded-md border border-neutral-300 px-5 py-3 text-sm font-semibold text-neutral-900 hover:bg-neutral-50 focus:outline-none">Ver servicios</a>
+								<div class="relative">
+									<button id="btn-servicios" type="button" aria-haspopup="true" aria-expanded="false" class="inline-flex items-center justify-center rounded-md border border-neutral-300 px-5 py-3 text-sm font-semibold text-neutral-900 hover:bg-neutral-50 focus:outline-none">
+										Ver servicios
+									</button>
+									<div id="menu-servicios" class="absolute z-20 mt-2 w-64 rounded-md border border-neutral-200 bg-white p-1 shadow-lg hidden" role="menu" aria-labelledby="btn-servicios">
+										<a href="#mantenimiento" class="block rounded-md px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50" role="menuitem">Mantenimiento mensual a empresas</a>
+										<a href="#repuestos" class="block rounded-md px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50" role="menuitem">Venta de repuestos</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -41,17 +49,6 @@ import "../styles/tailwind.css";
 		</header>
 
 		<main>
-			<section id="quienes-somos" class="container-pad py-14 md:py-20">
-				<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-					<div class="lg:col-span-4">
-						<h2 class="text-brand-600 text-2xl md:text-3xl font-extrabold tracking-tight">QUIENES <span class="block text-brand-500">SOMOS</span></h2>
-					</div>
-					<div class="lg:col-span-8">
-						<p class="text-neutral-700 text-base/7 md:text-lg/8 max-w-prose">Somos una empresa ubicada en Berazategui, Buenos Aires, que trabaja en toda la provincia con refrigeración, calefacción, aire acondicionado, calderas y energía solar.</p>
-					</div>
-				</div>
-			</section>
-
 			<section id="servicios" class="container-pad py-14 md:py-20">
 				<div class="text-center mb-12">
 					<h2 class="text-brand-600 text-2xl md:text-3xl font-extrabold tracking-tight">NUESTROS <span class="block text-brand-500">SERVICIOS</span></h2>
@@ -109,6 +106,31 @@ import "../styles/tailwind.css";
 				</div>
 			</section>
 
+			<!-- Nueva sección: Venta de repuestos -->
+			<section id="repuestos" class="container-pad py-14 md:py-20">
+				<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+					<div class="lg:col-span-6">
+						<h2 class="text-brand-600 text-2xl md:text-3xl font-extrabold tracking-tight">VENTA DE <span class="block text-brand-500">REPUESTOS</span></h2>
+						<p class="mt-4 text-neutral-700 text-base/7 md:text-lg/8 max-w-prose">
+							Repuestos para heladeras, lavarropas, aire acondicionado y sistemas de refrigeración. Asesoramiento técnico, compatibilidad garantizada y stock permanente para soluciones rápidas.
+						</p>
+						<ul class="mt-6 space-y-2 text-neutral-800">
+							<li class="flex items-start gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-brand-600"></span><span>Marcas líderes y piezas originales</span></li>
+							<li class="flex items-start gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-brand-600"></span><span>Opciones alternativas de alta calidad</span></li>
+							<li class="flex items-start gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-brand-600"></span><span>Retiro en tienda o envíos a todo el país</span></li>
+						</ul>
+						<div class="mt-6">
+							<a href="#contacto" class="inline-flex items-center justify-center rounded-md bg-brand-600 px-5 py-3 text-sm font-semibold text-black shadow-sm transition hover:bg-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500">Consultar repuestos</a>
+						</div>
+					</div>
+					<div class="lg:col-span-6">
+						<div class="aspect-[4/3] w-full overflow-hidden rounded-lg shadow-lg">
+							<img src="/imagenrepuestos.png" alt="Venta de repuestos" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+						</div>
+					</div>
+				</div>
+			</section>
+
 			<section id="ubicacion" class="container-pad py-14 md:py-20">
 				<div class="text-center mb-12">
 					<h2 class="text-brand-600 text-2xl md:text-3xl font-extrabold tracking-tight">NUESTRA <span class="block text-brand-500">UBICACIÓN</span></h2>
@@ -144,5 +166,39 @@ import "../styles/tailwind.css";
 				</div>
 			</section>
 		</main>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const btn = document.getElementById('btn-servicios');
+				const menu = document.getElementById('menu-servicios');
+				if (!btn || !menu) return;
+				const close = () => {
+					menu.classList.add('hidden');
+					btn.setAttribute('aria-expanded', 'false');
+				};
+				btn.addEventListener('click', (e) => {
+					e.preventDefault();
+					const isHidden = menu.classList.contains('hidden');
+					if (isHidden) {
+						menu.classList.remove('hidden');
+						btn.setAttribute('aria-expanded', 'true');
+					} else {
+						close();
+					}
+				});
+				document.addEventListener('click', (e) => {
+					const target = e.target;
+					if (!(target instanceof Node)) return;
+					if (!menu.classList.contains('hidden')) {
+						if (!menu.contains(target) && !btn.contains(target)) {
+							close();
+						}
+					}
+				});
+				document.addEventListener('keydown', (e) => {
+					if (e.key === 'Escape') close();
+				});
+			});
+		</script>
 	</body>
 </html>
