@@ -131,6 +131,54 @@ import "../styles/tailwind.css";
 				</div>
 			</section>
 
+			<!-- Nueva sección: Aires Acondicionados -->
+			<section id="aires" class="container-pad py-14 md:py-20">
+				<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+					<div class="lg:col-span-6">
+						<h2 class="text-brand-600 text-2xl md:text-3xl font-extrabold tracking-tight">AIRES <span class="block text-brand-500">ACONDICIONADOS</span></h2>
+						<p class="mt-4 text-neutral-700 text-base/7 md:text-lg/8 max-w-prose">
+							Instalación, mantenimiento y reparación de aires acondicionados. Asesoramiento para elegir el equipo ideal y optimizar el consumo.
+						</p>
+						<ul class="mt-6 space-y-2 text-neutral-800">
+							<li class="flex items-start gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-brand-600"></span><span>Instalación y puesta en marcha</span></li>
+							<li class="flex items-start gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-brand-600"></span><span>Mantenimiento preventivo (limpieza y control)</span></li>
+							<li class="flex items-start gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-brand-600"></span><span>Diagnóstico y reparación</span></li>
+						</ul>
+						<div class="mt-6">
+							<a href="https://wa.link/khdh6i" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-md bg-brand-600 px-5 py-3 text-sm font-semibold text-black shadow-sm transition hover:bg-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500">Consultar por aires</a>
+						</div>
+					</div>
+					<div class="lg:col-span-6">
+						<div id="aires-carousel" class="relative aspect-[4/3] w-full overflow-hidden rounded-lg shadow-lg bg-neutral-100">
+							<img src="/aires1.jpg" alt="Aires acondicionados - imagen 1" class="aires-slide h-full w-full object-cover" loading="lazy" decoding="async" />
+							<img src="/aires2.jpg" alt="Aires acondicionados - imagen 2" class="aires-slide hidden h-full w-full object-cover" loading="lazy" decoding="async" />
+							<img src="/aires3.jpg" alt="Aires acondicionados - imagen 3" class="aires-slide hidden h-full w-full object-cover" loading="lazy" decoding="async" />
+							<img src="/aires4.jpg" alt="Aires acondicionados - imagen 4" class="aires-slide hidden h-full w-full object-cover" loading="lazy" decoding="async" />
+
+							<button id="aires-prev" type="button" class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500" aria-label="Anterior">
+								<span class="sr-only">Anterior</span>
+								<svg viewBox="0 0 24 24" class="h-5 w-5 text-neutral-900" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M15 18l-6-6 6-6" />
+								</svg>
+							</button>
+							<button id="aires-next" type="button" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500" aria-label="Siguiente">
+								<span class="sr-only">Siguiente</span>
+								<svg viewBox="0 0 24 24" class="h-5 w-5 text-neutral-900" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M9 6l6 6-6 6" />
+								</svg>
+							</button>
+
+							<div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-full bg-black/20 px-3 py-2">
+								<button type="button" class="aires-dot h-2.5 w-2.5 rounded-full bg-brand-600 ring-1 ring-white/60" aria-label="Ir a imagen 1" data-index="0" aria-current="true"></button>
+								<button type="button" class="aires-dot h-2.5 w-2.5 rounded-full bg-white/80 ring-1 ring-white/60" aria-label="Ir a imagen 2" data-index="1"></button>
+								<button type="button" class="aires-dot h-2.5 w-2.5 rounded-full bg-white/80 ring-1 ring-white/60" aria-label="Ir a imagen 3" data-index="2"></button>
+								<button type="button" class="aires-dot h-2.5 w-2.5 rounded-full bg-white/80 ring-1 ring-white/60" aria-label="Ir a imagen 4" data-index="3"></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
 			<section id="ubicacion" class="container-pad py-14 md:py-20">
 				<div class="text-center mb-12">
 					<h2 class="text-brand-600 text-2xl md:text-3xl font-extrabold tracking-tight">NUESTRA <span class="block text-brand-500">UBICACIÓN</span></h2>
@@ -198,6 +246,68 @@ import "../styles/tailwind.css";
 				document.addEventListener('keydown', (e) => {
 					if (e.key === 'Escape') close();
 				});
+			});
+		</script>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const root = document.getElementById('aires-carousel');
+				if (!root) return;
+
+				const slides = Array.from(root.querySelectorAll('.aires-slide'));
+				const dots = Array.from(root.querySelectorAll('.aires-dot'));
+				const prev = document.getElementById('aires-prev');
+				const next = document.getElementById('aires-next');
+				if (!slides.length || !prev || !next) return;
+
+				let index = 0;
+				let timer = null;
+
+				const show = (i) => {
+					index = (i + slides.length) % slides.length;
+					slides.forEach((el, idx) => el.classList.toggle('hidden', idx !== index));
+					dots.forEach((dot, idx) => {
+						dot.classList.toggle('bg-brand-600', idx === index);
+						dot.classList.toggle('bg-white/80', idx !== index);
+						if (idx === index) dot.setAttribute('aria-current', 'true');
+						else dot.removeAttribute('aria-current');
+					});
+				};
+
+				const stop = () => {
+					if (timer) window.clearInterval(timer);
+					timer = null;
+				};
+				const start = () => {
+					stop();
+					timer = window.setInterval(() => show(index + 1), 5000);
+				};
+
+				prev.addEventListener('click', () => {
+					show(index - 1);
+					start();
+				});
+				next.addEventListener('click', () => {
+					show(index + 1);
+					start();
+				});
+				dots.forEach((dot) => {
+					dot.addEventListener('click', () => {
+						const raw = dot.getAttribute('data-index');
+						const i = raw ? Number(raw) : 0;
+						if (!Number.isFinite(i)) return;
+						show(i);
+						start();
+					});
+				});
+
+				root.addEventListener('mouseenter', stop);
+				root.addEventListener('mouseleave', start);
+				root.addEventListener('focusin', stop);
+				root.addEventListener('focusout', start);
+
+				show(0);
+				start();
 			});
 		</script>
 	</body>
