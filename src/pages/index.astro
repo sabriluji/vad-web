@@ -99,8 +99,33 @@ import "../styles/tailwind.css";
 						</div>
 					</div>
 					<div class="lg:col-span-6">
-						<div class="aspect-[4/3] w-full overflow-hidden rounded-lg shadow-lg">
-							<img src="/futuraimagendemanteniemiento.png" alt="Mantenimiento mensual a empresas" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+						<div id="empresas-carousel" class="relative aspect-[4/3] w-full overflow-hidden rounded-lg shadow-lg bg-neutral-100">
+							<img src="/empresas1.jpeg" alt="Mantenimiento a empresas - imagen 1" class="empresas-slide h-full w-full object-cover" loading="lazy" decoding="async" />
+							<img src="/empresas2.jpg" alt="Mantenimiento a empresas - imagen 2" class="empresas-slide hidden h-full w-full object-cover" loading="lazy" decoding="async" />
+							<img src="/empresas3.jpg" alt="Mantenimiento a empresas - imagen 3" class="empresas-slide hidden h-full w-full object-cover" loading="lazy" decoding="async" />
+							<img src="/empresas4.jpeg" alt="Mantenimiento a empresas - imagen 4" class="empresas-slide hidden h-full w-full object-cover" loading="lazy" decoding="async" />
+							<img src="/empresas5.jpg" alt="Mantenimiento a empresas - imagen 5" class="empresas-slide hidden h-full w-full object-cover" loading="lazy" decoding="async" />
+
+							<button id="empresas-prev" type="button" class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500" aria-label="Anterior">
+								<span class="sr-only">Anterior</span>
+								<svg viewBox="0 0 24 24" class="h-5 w-5 text-neutral-900" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M15 18l-6-6 6-6" />
+								</svg>
+							</button>
+							<button id="empresas-next" type="button" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500" aria-label="Siguiente">
+								<span class="sr-only">Siguiente</span>
+								<svg viewBox="0 0 24 24" class="h-5 w-5 text-neutral-900" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M9 6l6 6-6 6" />
+								</svg>
+							</button>
+
+							<div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-full bg-black/20 px-3 py-2">
+								<button type="button" class="empresas-dot h-2.5 w-2.5 rounded-full bg-brand-600 ring-1 ring-white/60" aria-label="Ir a imagen 1" data-index="0" aria-current="true"></button>
+								<button type="button" class="empresas-dot h-2.5 w-2.5 rounded-full bg-white/80 ring-1 ring-white/60" aria-label="Ir a imagen 2" data-index="1"></button>
+								<button type="button" class="empresas-dot h-2.5 w-2.5 rounded-full bg-white/80 ring-1 ring-white/60" aria-label="Ir a imagen 3" data-index="2"></button>
+								<button type="button" class="empresas-dot h-2.5 w-2.5 rounded-full bg-white/80 ring-1 ring-white/60" aria-label="Ir a imagen 4" data-index="3"></button>
+								<button type="button" class="empresas-dot h-2.5 w-2.5 rounded-full bg-white/80 ring-1 ring-white/60" aria-label="Ir a imagen 5" data-index="4"></button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -124,8 +149,27 @@ import "../styles/tailwind.css";
 						</div>
 					</div>
 					<div class="lg:col-span-6">
-						<div class="aspect-[4/3] w-full overflow-hidden rounded-lg shadow-lg">
-							<img src="/imagenrepuestos.png" alt="Venta de repuestos" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+						<div id="repuestos-carousel" class="relative aspect-[4/3] w-full overflow-hidden rounded-lg shadow-lg bg-neutral-100">
+							<img src="/repuestos1.jpeg" alt="Venta de repuestos - imagen 1" class="repuestos-slide h-full w-full object-cover" loading="lazy" decoding="async" />
+							<img src="/repuestos2.jpeg" alt="Venta de repuestos - imagen 2" class="repuestos-slide hidden h-full w-full object-cover" loading="lazy" decoding="async" />
+
+							<button id="repuestos-prev" type="button" class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500" aria-label="Anterior">
+								<span class="sr-only">Anterior</span>
+								<svg viewBox="0 0 24 24" class="h-5 w-5 text-neutral-900" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M15 18l-6-6 6-6" />
+								</svg>
+							</button>
+							<button id="repuestos-next" type="button" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500" aria-label="Siguiente">
+								<span class="sr-only">Siguiente</span>
+								<svg viewBox="0 0 24 24" class="h-5 w-5 text-neutral-900" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M9 6l6 6-6 6" />
+								</svg>
+							</button>
+
+							<div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-full bg-black/20 px-3 py-2">
+								<button type="button" class="repuestos-dot h-2.5 w-2.5 rounded-full bg-brand-600 ring-1 ring-white/60" aria-label="Ir a imagen 1" data-index="0" aria-current="true"></button>
+								<button type="button" class="repuestos-dot h-2.5 w-2.5 rounded-full bg-white/80 ring-1 ring-white/60" aria-label="Ir a imagen 2" data-index="1"></button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -258,6 +302,130 @@ import "../styles/tailwind.css";
 				const dots = Array.from(root.querySelectorAll('.aires-dot'));
 				const prev = document.getElementById('aires-prev');
 				const next = document.getElementById('aires-next');
+				if (!slides.length || !prev || !next) return;
+
+				let index = 0;
+				let timer = null;
+
+				const show = (i) => {
+					index = (i + slides.length) % slides.length;
+					slides.forEach((el, idx) => el.classList.toggle('hidden', idx !== index));
+					dots.forEach((dot, idx) => {
+						dot.classList.toggle('bg-brand-600', idx === index);
+						dot.classList.toggle('bg-white/80', idx !== index);
+						if (idx === index) dot.setAttribute('aria-current', 'true');
+						else dot.removeAttribute('aria-current');
+					});
+				};
+
+				const stop = () => {
+					if (timer) window.clearInterval(timer);
+					timer = null;
+				};
+				const start = () => {
+					stop();
+					timer = window.setInterval(() => show(index + 1), 5000);
+				};
+
+				prev.addEventListener('click', () => {
+					show(index - 1);
+					start();
+				});
+				next.addEventListener('click', () => {
+					show(index + 1);
+					start();
+				});
+				dots.forEach((dot) => {
+					dot.addEventListener('click', () => {
+						const raw = dot.getAttribute('data-index');
+						const i = raw ? Number(raw) : 0;
+						if (!Number.isFinite(i)) return;
+						show(i);
+						start();
+					});
+				});
+
+				root.addEventListener('mouseenter', stop);
+				root.addEventListener('mouseleave', start);
+				root.addEventListener('focusin', stop);
+				root.addEventListener('focusout', start);
+
+				show(0);
+				start();
+			});
+		</script>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const root = document.getElementById('empresas-carousel');
+				if (!root) return;
+
+				const slides = Array.from(root.querySelectorAll('.empresas-slide'));
+				const dots = Array.from(root.querySelectorAll('.empresas-dot'));
+				const prev = document.getElementById('empresas-prev');
+				const next = document.getElementById('empresas-next');
+				if (!slides.length || !prev || !next) return;
+
+				let index = 0;
+				let timer = null;
+
+				const show = (i) => {
+					index = (i + slides.length) % slides.length;
+					slides.forEach((el, idx) => el.classList.toggle('hidden', idx !== index));
+					dots.forEach((dot, idx) => {
+						dot.classList.toggle('bg-brand-600', idx === index);
+						dot.classList.toggle('bg-white/80', idx !== index);
+						if (idx === index) dot.setAttribute('aria-current', 'true');
+						else dot.removeAttribute('aria-current');
+					});
+				};
+
+				const stop = () => {
+					if (timer) window.clearInterval(timer);
+					timer = null;
+				};
+				const start = () => {
+					stop();
+					timer = window.setInterval(() => show(index + 1), 5000);
+				};
+
+				prev.addEventListener('click', () => {
+					show(index - 1);
+					start();
+				});
+				next.addEventListener('click', () => {
+					show(index + 1);
+					start();
+				});
+				dots.forEach((dot) => {
+					dot.addEventListener('click', () => {
+						const raw = dot.getAttribute('data-index');
+						const i = raw ? Number(raw) : 0;
+						if (!Number.isFinite(i)) return;
+						show(i);
+						start();
+					});
+				});
+
+				root.addEventListener('mouseenter', stop);
+				root.addEventListener('mouseleave', start);
+				root.addEventListener('focusin', stop);
+				root.addEventListener('focusout', start);
+
+				show(0);
+				start();
+			});
+		</script>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const root = document.getElementById('repuestos-carousel');
+				if (!root) return;
+
+				const slides = Array.from(root.querySelectorAll('.repuestos-slide'));
+				const dots = Array.from(root.querySelectorAll('.repuestos-dot'));
+				const prev = document.getElementById('repuestos-prev');
+				const next = document.getElementById('repuestos-next');
 				if (!slides.length || !prev || !next) return;
 
 				let index = 0;
